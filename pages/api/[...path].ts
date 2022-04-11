@@ -1,6 +1,7 @@
 // when going to api, except hello, all will be matched with AAA
 import httpProxy from "http-proxy";
 import type { NextApiRequest, NextApiResponse } from "next";
+import Cookies from "cookies";
 
 // type Data = {
 //   name: string;
@@ -19,6 +20,11 @@ export default function handler(
   res: NextApiResponse<any>
 ) {
   return new Promise((resolve) => {
+    const cookies = new Cookies(req, res);
+    const accessToken = cookies.get("access_token");
+    if (accessToken) {
+      req.headers.Authorization = `Bearer ${accessToken}`;
+    }
     // don't send cookies to API server
     req.headers.cookie = "";
 
@@ -30,8 +36,8 @@ export default function handler(
       selfHandleResponse: false,
     });
 
-    proxy.once('proxyReq', () => {
-      resolve(true)
-    })
+    proxy.once("proxyReq", () => {
+      resolve(true);
+    });
   });
 }
