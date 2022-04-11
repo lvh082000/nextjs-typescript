@@ -6,9 +6,6 @@ type Data = {
 }
 
 // http://localhost:3000/api/products/123/lvh/na/37
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
   res.status(200).json({ name: 'Catch all paths of products' })
 }
