@@ -1,6 +1,6 @@
 import axios from 'axios'
-
-const axiosClient = axios.create({
+ 
+export const axiosClient = axios.create({
   baseURL: '/api',
   headers: {
     'Content-Type': 'application/json',
@@ -8,7 +8,7 @@ const axiosClient = axios.create({
 })
 
 // Add a response interceptor
-axios.interceptors.response.use(
+axiosClient.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
@@ -21,4 +21,3 @@ axios.interceptors.response.use(
   }
 )
 
-export default axiosClient

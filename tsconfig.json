@@ -16,7 +16,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/components": ["./components/index.ts"],
+      "@/components/*": ["./components/*"],
       "@/styles/*": ["./styles/*"],
       "@/constants": ["./constants/index.ts"],
       "@/hooks": ["./hooks/index.ts"],
