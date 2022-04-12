@@ -1,16 +1,19 @@
 import * as React from 'react'
 import { useAuth } from '@/hooks'
+import { useRouter } from 'next/router'
 
 export default function LoginPage() {
   const { profile, login, logout, getProfile } = useAuth({
     // is the new page, do not call
     revalidateOnMount: false,
   })
+  const router = useRouter()
 
   async function handleLoginClick() {
     try {
       await login()
       console.log('redirect to dashboard')
+      router.push('/about')
     } catch (error) {
       console.log('failed to login', error)
     }
