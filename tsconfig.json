@@ -22,6 +22,7 @@
       "@/hooks": ["./hooks/index.ts"],
       "@/models": ["./models/index.ts"],
       "@/api": ["./api-client/index.ts"],
+      "@/utils": ["./utils/index.ts"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
